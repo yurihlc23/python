@@ -1,0 +1,42 @@
+def criptografar(mensagem, chave):
+    result = ""
+  
+    for i in range(len(mensagem)):
+        char = mensagem[i]
+  
+        if char.isupper():
+            result += chr((ord(char) + chave - 65) % 26 + 65)
+  
+        elif char.islower():
+            result += chr((ord(char) + chave - 97) % 26 + 97)
+  
+        else:
+            result += char
+    return result
+
+
+def descriptografar(mensagem, chave):
+    result = ""
+  
+    for i in range(len(mensagem)):
+        char = mensagem[i]
+  
+        if char.isupper():
+            result += chr((ord(char) - chave - 65) % 26 + 65)
+  
+        elif char.islower():
+            result += chr((ord(char) - chave - 97) % 26 + 97)
+  
+        else:
+            result += char
+    return result
+
+
+mensagem = input("Digite o texto para criptografar e descriptografar(sem acentuação): ")
+chave = int(input("Insira a chave de criptografia e descriptografia (inteiro): "))
+
+criptografar_mensagem = criptografar(mensagem, chave)
+print("Mensagem criptografada: ", criptografar_mensagem)
+
+descriptografar_mensagem = descriptografar(criptografar_mensagem, chave)
+print("Mensagem descriptografada: ", descriptografar_mensagem)
