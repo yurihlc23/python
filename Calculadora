@@ -1,0 +1,347 @@
+from tkinter import*
+
+
+root = Tk()
+root.title('Calculadora')
+root.geometry('400x355')
+root.minsize(400,355)
+root.maxsize(400,355)
+
+numero1 = ''
+numero2 = ''
+divisao = FALSE
+multiplicar = FALSE
+mais = FALSE
+menos = FALSE
+
+root.configure(background= '#282828')
+
+e = Entry(root, width=15, borderwidth=-4, relief=FLAT, fg='#FFFFFF', bg='#a7a28f', font=('futura',25, 'bold'), justify=CENTER)
+e.grid(
+    row= 0,
+    column=0,
+    columnspan=4,
+    pady= 2
+)
+
+def botao_divisao():
+    global numero1
+    global divisao
+    divisao = TRUE
+    numero1 = e.get()
+    e.delete(0, END)    
+
+def botao_click(num):
+    e.insert(END, num)
+
+def botao_multiplica():
+    global numero1
+    global multiplica
+    multiplica = TRUE
+    numero1 = e.get()
+    e.delete(0, END)    
+
+def botao_menos():
+    global numero1
+    global menos
+    menos = TRUE
+    numero1 = e.get()
+    e.delete(0, END)    
+
+def botao_mais():
+    global numero1
+    global mais
+    mais = TRUE
+    numero1 = e.get()
+    e.delete(0, END)    
+
+def botao_limpar():
+    e.delete(0, END)
+
+def botao_igual():
+    global divisao
+    global multiplica
+    global menos
+    global mais
+    numero2 = e.get()
+    e.delete(0, END)
+    if divisao == TRUE:
+        e.insert(0, int(numero1) / int(numero2))
+        divisao = FALSE
+
+    if multiplica == TRUE:
+        e.insert(0, int(numero1) * int(numero2))
+        multiplica = FALSE
+
+    if menos == TRUE:
+        e.insert(0, int(numero1) - int(numero2))
+        menos = FALSE
+
+    if mais == TRUE:
+        e.insert(0, int(numero1) + int(numero2))
+        mais = FALSE
+
+
+#Botão de divisão
+divide = Button(
+    root, 
+    text='/',
+    padx=40,
+    pady=20,
+    command=botao_divisao,
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+divide.grid(row=0, column=4)
+
+
+#Botão 1
+um = Button(
+    root, 
+    text='1',
+    padx=40,
+    pady=20,
+    command=lambda: botao_click(1),
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+
+um.grid(row=1, column=1)
+
+#Botão 2
+dois = Button(
+    root, 
+    text='2',
+    padx=40,
+    pady=20,
+    command=lambda: botao_click(2),
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+
+dois.grid(row=1, column=2)
+
+#Botão 3
+tres = Button(
+    root, 
+    text='3',
+    padx=40,
+    pady=20,
+    command=lambda: botao_click(3),
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+
+tres.grid(row=1, column=3)
+
+#Botão para multiplicar
+multiplica = Button(
+    root, 
+    text='x',
+    padx=40,
+    pady=20,
+    command=botao_multiplica,
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+
+multiplica.grid(row=1, column=4)
+
+#Botão 4
+quatro = Button(
+    root, 
+    text='4',
+    padx=40,
+    pady=20,
+    command=lambda: botao_click(4),
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+
+quatro.grid(row=2, column=1)
+
+#Botão 5
+cinco = Button(
+    root, 
+    text='5',
+    padx=40,
+    pady=20,
+    command=lambda: botao_click(5),
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+cinco.grid(row=2, column=2)
+
+#Botão 5
+seis = Button(
+    root, 
+    text='6',
+    padx=40,
+    pady=20,
+    command=lambda: botao_click(6),
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+seis.grid(row=2, column=3)
+
+#Botão de menos
+menos = Button(
+    root, 
+    text='-',
+    padx=40,
+    pady=20,
+    command=botao_menos,
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+menos.grid(row=2, column=4)
+
+#Botão 7
+sete = Button(
+    root, 
+    text='7',
+    padx=40,
+    pady=20,
+    command=lambda: botao_click(7),
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+sete.grid(row=3, column=1)
+
+#Botão 8
+oito = Button(
+    root, 
+    text='8',
+    padx=40,
+    pady=20,
+    command=lambda: botao_click(8),
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+oito.grid(row=3, column=2)
+
+#Botão 9
+nove = Button(
+    root, 
+    text='9',
+    padx=40,
+    pady=20,
+    command=lambda: botao_click(9),
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+nove.grid(row=3, column=3)
+
+#Botão de mais
+mais = Button(
+    root, 
+    text='+',
+    padx=40,
+    pady=20,
+    command=botao_mais,
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+mais.grid(row=3, column=4)
+
+#Botão 0
+zero = Button(
+    root, 
+    text='0',
+    padx=40,
+    pady=20,
+    command=lambda: botao_click(0),
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+zero.grid(row=4, column=1)
+
+#Botão de limpar
+limpar = Button(
+    root, 
+    text='C',
+    padx=40,
+    pady=20,
+    command=botao_limpar,
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+limpar.grid(row=4, column=2)
+
+#Botão de igual
+igual = Button(
+    root, 
+    text='=',
+    padx=40,
+    pady=20,
+    command=botao_igual,
+    fg='#FFFFFF',
+    activebackground='#FFFFFF',
+    bg='#320064',
+    activeforeground='#240046',
+    relief=FLAT,
+    font=('futura', 12, 'bold')
+)
+igual.grid(row=4, column=3)
+
+root.mainloop()
